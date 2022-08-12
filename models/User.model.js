@@ -13,10 +13,8 @@ const userSchema = new Schema(
     },
     password: {
       String,
-      required: true,
-      minlength: [5, 'Password must be at least 5 characters long']
     },
-    profilePic: {
+    avatar: {
       type: String,
       default: 'https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png',
     },
