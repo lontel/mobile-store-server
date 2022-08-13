@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const { isAuthenticated } = require('../middleware/jwt.middleware')
-
 const User = require('../models/User.model')
+
 
 // Get all users
 router.get('/getAllUsers', isAuthenticated, (req, res, next) => {
@@ -13,7 +13,7 @@ router.get('/getAllUsers', isAuthenticated, (req, res, next) => {
 })
 
 // Get my profile
-router.get('/myprofile/:user_id', isAuthenticated, (req, res) => {
+router.get('/myprofile/:user_id', isAuthenticated, (req, res, next) => {
 
     const { user_id } = req.params
 

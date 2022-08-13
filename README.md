@@ -7,14 +7,14 @@ Auth Routes
 `/api/auth/login`|POST|{myProfile}|Join in session
 `/api/auth/verify`|GET|{Validated user data}|Validated user data
 User Routes
+`/api/user/getAllUsers`|GET|[allUsers]|Get all users data
+`/api/user/myprofile/:user_id`|GET|{profile info}|Get my profile info
 `/api/user/update/:user_id`|PUT|{user}|Submit user data changes
 `/api/user/delete/:user_id`|DELETE|Delete a specific user|Delete a specific user
-`/api/user/myprofile/:user_id`|GET|{profile info}|Get my profile info
-`/api/user/getAllUsers`|GET|[allUsers]|Get all users data
 Item Routes
+`/api/item/save`|POST|{itemData}|Save a new item data 
 `/api/item/list` | GET | [All items] |Get all items from DB
 `/api/item/details/:item_id`|GET|{itemData}|Render specific item(details)
-`/api/item/save`|POST|{itemData}|Save a new item data 
 `/api/item/update/:item_id`|PUT|{itemData}|Edit item
 `/api/item/delete/:item_id`|DELETE|Delete a specific item data|Delete a specific item data
 `/api/item/getFilteredItem`|GET|[Filtered items]|Get al filtered items

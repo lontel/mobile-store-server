@@ -49,10 +49,10 @@ router.post('/signup', (req, res, next) => {
 // Login
 router.post('/login', (req, res, next) => {
 
-    const { email, password } = req.body;
+    const { email, password } = req.body
 
     if (email === '' || password === '') {
-        res.status(400).json({ message: "Provide email and password." });
+        res.status(400).json({ message: "Provide email and password." })
         return;
     }
 
@@ -80,11 +80,11 @@ router.post('/login', (req, res, next) => {
                     res.status(200).json({ authToken: authToken });
                 }
                 else {
-                    res.status(401).json({ message: "Unable to authenticate the user" });
+                    res.status(401).json({ message: "Unable to authenticate the user" })
                 }
                 
             })
-            .catch(err => res.status(500).json({ message: "Internal Server Error" }));
+            .catch(err => res.status(500).json({ message: "Internal Server Error" }))
 })
 
 // Verify user
