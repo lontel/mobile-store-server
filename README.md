@@ -5,12 +5,12 @@
 Auth Routes
 `/api/auth/signup`|POST|{user}|Create a new user
 `/api/auth/login`|POST|{myProfile}|Join in session
-`/api/auth/logout`|POST|Logout|Logout
 `/api/auth/verify`|GET|{Validated user data}|Validated user data
 User Routes
 `/api/user/update/:user_id`|PUT|{user}|Submit user data changes
 `/api/user/delete/:user_id`|DELETE|Delete a specific user|Delete a specific user
-`/api/user/myprofile/:account_id`|GET|{profile info}|Get my profile info
+`/api/user/myprofile/:user_id`|GET|{profile info}|Get my profile info
+`/api/user/getAllUsers`|GET|[allUsers]|Get all users data
 Item Routes
 `/api/item/list` | GET | [All items] |Get all items from DB
 `/api/item/details/:item_id`|GET|{itemData}|Render specific item(details)

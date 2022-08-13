@@ -8,8 +8,8 @@ const { isAuthenticated } = require('../middleware/jwt.middleware')
 const router = express.Router()
 const saltRounds = 10
 
-// Sign-up
 
+// Register
 router.post('/signup', (req, res, next) => {
 
     const { username, password, avatar, email, role } = req.body
@@ -31,7 +31,7 @@ router.post('/signup', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds)
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            return User.create({ username, bio, profilePic, password: hashedPassword, email, role })
+            return User.create({ username, password: hashedPassword, avatar, email, role })
         })
         .then((createdUser) => {
 
@@ -47,7 +47,6 @@ router.post('/signup', (req, res, next) => {
 })
 
 // Login
-
 router.post('/login', (req, res, next) => {
 
     const { email, password } = req.body;
@@ -60,38 +59,36 @@ router.post('/login', (req, res, next) => {
     User
         .findOne({ email })
         .then((foundUser) => {
-
+            
             if (!foundUser) {
                 res.status(401).json({ message: "User not found." })
                 return;
             }
-
+            
             if (bcrypt.compareSync(password, foundUser.password)) {
-
+                
                 const { _id, email, username, role, avatar } = foundUser;
-
+                
                 const payload = { _id, email, username, role, avatar }
-
+                
                 const authToken = jwt.sign(
                     payload,
                     process.env.TOKEN_SECRET,
                     { algorithm: 'HS256', expiresIn: "6h" }
-                )
-
-                res.status(200).json({ authToken: authToken });
-            }
-            else {
-                res.status(401).json({ message: "Unable to authenticate the user" });
-            }
-
-        })
-        .catch(err => res.status(500).json({ message: "Internal Server Error" }));
+                    )
+                    
+                    res.status(200).json({ authToken: authToken });
+                }
+                else {
+                    res.status(401).json({ message: "Unable to authenticate the user" });
+                }
+                
+            })
+            .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 })
 
 // Verify user
-
 router.get('/verify', isAuthenticated, (req, res) => {
-
 
     setTimeout(() => {
         res.status(200).json(req.payload)
