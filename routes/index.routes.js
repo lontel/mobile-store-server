@@ -14,5 +14,8 @@ router.use('/user', require('./user.routes'))
 // Routes of item
 router.use('/item', require('./item.routes'))
 
+// Routes of upload
+router.use('/upload', require('./upload.routes'))
+
 
 module.exports = router

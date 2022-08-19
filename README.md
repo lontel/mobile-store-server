@@ -18,15 +18,16 @@ Item Routes
 `/api/item/update/:item_id`|PUT|{itemData}|Edit item
 `/api/item/delete/:item_id`|DELETE|Delete a specific item data|Delete a specific item data
 `/api/item/getFilteredItem`|GET|[Filtered items]|Get al filtered items
-Favorites Routes
-`/api/favorites/list` | GET | [All favorite items] |Get all favorite items 
-`/api/favorites/add-item/:item_id`|PUT|Add item to favorites list|Add item to favorites list
-`/api/favorites/remove-item/:item_id`|PUT|Remove item from favorites list|Remove item from favorites list
 Cart Routes
 `/api/cart/list`|GET|[Al items in cart]|Al items in cart
 `/api/cart/add-item/:item_id`|PUT|Add item to cart|Add item to cart
 `/api/cart/remove-item/:item_id`|PUT|Remove item from cart|Remove item from cart
+Favorites Routes
+`/api/favorites/list` | GET | [All favorite items] |Get all favorite items 
+`/api/favorites/add-item/:item_id`|PUT|Add item to favorites list|Add item to favorites list
+`/api/favorites/remove-item/:item_id`|PUT|Remove item from favorites list|Remove item from favorites list
+Upload
+`/api/upload/image`|POST|Upload an image
+`/api/upload/images`|POST|Upload several images
 Stripe Routes
 `/api/stripe/checkout`|POST|Payment gateway
-Upload
-`/api/image`|POST|Upload images
