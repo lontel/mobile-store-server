@@ -2,17 +2,21 @@ const { Schema, model } = require("mongoose")
 
 const userSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
-      unique: true,
       required: [true, 'Please fill in this field'],
-      minlength: [3, 'Username must be at least 3 characters long'],
-      maxlength: [10, 'Username cannot be more than 10 characters long'],
+      trim: true,
+      set: value => value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()
+    },
+    lastName: {
+      type: String,
+      required: [true, 'Please fill in this field'],
       trim: true,
       set: value => value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()
     },
     password: {
-      String,
+      type: String,
+      required: true
     },
     avatar: {
       type: String,

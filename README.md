@@ -1,4 +1,4 @@
-# mobile-store-server
+# tech-store-server
 
 |  URL path  |  HTTP Method  |  RESPONSE (200)| ACTION   |
 | :--------- |:-------------:| -------------: |----------|

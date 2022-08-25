@@ -12,7 +12,7 @@ const saltRounds = 10
 // Register
 router.post('/signup', (req, res, next) => {
 
-    const { username, password, avatar, email, role } = req.body
+    const { firstName, lastName, password, avatar, email, role } = req.body
 
     if (password.length < 5) {
         res.status(400).json({ message: 'Password must have at least 5 characters' })
@@ -31,12 +31,12 @@ router.post('/signup', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds)
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            return User.create({ username, password: hashedPassword, avatar, email, role })
+            return User.create({ firstName, lastName, password: hashedPassword, avatar, email, role })
         })
         .then((createdUser) => {
 
-            const { email, username, _id } = createdUser
-            const user = { username, password, avatar, email, role, _id }
+            const { email, firstName, lastName, _id } = createdUser
+            const user = { firstName, lastName, password, avatar, email, role, _id }
 
             res.status(201).json({ user })
         })
@@ -53,7 +53,7 @@ router.post('/login', (req, res, next) => {
 
     if (email === '' || password === '') {
         res.status(400).json({ message: "Provide email and password." })
-        return;
+        return
     }
 
     User
@@ -62,12 +62,12 @@ router.post('/login', (req, res, next) => {
             
             if (!foundUser) {
                 res.status(401).json({ message: "User not found." })
-                return;
+                return
             }
             
             if (bcrypt.compareSync(password, foundUser.password)) {
                 
-                const { _id, email, username, role, avatar } = foundUser;
+                const { _id, email, username, role, avatar } = foundUser
                 
                 const payload = { _id, email, username, role, avatar }
                 
@@ -77,7 +77,7 @@ router.post('/login', (req, res, next) => {
                     { algorithm: 'HS256', expiresIn: "6h" }
                     )
                     
-                    res.status(200).json({ authToken: authToken });
+                    res.status(200).json({ authToken: authToken })
                 }
                 else {
                     res.status(401).json({ message: "Unable to authenticate the user" })
