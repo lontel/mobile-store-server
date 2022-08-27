@@ -56,7 +56,7 @@ router.delete('/delete/:item_id', (req, res, next) => {
 })
 
 // Get filtered items
-router.get('/getFilteredItem', (req, res) => {
+router.get('/getFilteredItems', (req, res) => {
 
     const { name } = req.query
 
