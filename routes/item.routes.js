@@ -4,10 +4,10 @@ const Item = require('../models/Item.model')
 // Create a new item
 router.post('/save', (req, res, next) => {
 
-    const {name, category, images, description, rating, price, publisher, releaseDate, owner} = req.body
+    const {name, category, images, description, rating, price, publisher, releaseDate} = req.body
 
     Item
-        .create({name, category, images, description, rating, price, publisher, releaseDate, owner})
+        .create({name, category, images, description, rating, price, publisher, releaseDate})
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })

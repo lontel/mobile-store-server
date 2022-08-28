@@ -29,8 +29,7 @@ const itemSchema = new Schema(
             type: String
         },
         releaseDate: {
-            type: String,
-            required: true
+            type: Date,
         },
         owner: {
             type: Schema.Types.ObjectId,
