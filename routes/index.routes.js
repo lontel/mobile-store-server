@@ -17,5 +17,7 @@ router.use('/item', require('./item.routes'))
 // Routes of upload
 router.use('/upload', require('./upload.routes'))
 
+// Routes of banner
+router.use('/banner', require('./banner.routes'))
 
 module.exports = router
