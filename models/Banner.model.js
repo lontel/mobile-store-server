@@ -3,8 +3,7 @@ const { Schema, model } = require("mongoose")
 const bannerSchema = new Schema(
     {
         pictures: {
-            type: [String],
-            required: true
+            type: [String]
         }
     },
     {

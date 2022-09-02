@@ -1,18 +1,18 @@
 const router = require("express").Router()
 const Banner = require('../models/Banner.model')
 
-// Create a new item
+// Update a new photo
 router.post('/savePhotos', (req, res, next) => {
 
-    const {images} = req.body
+    const { pictures } = req.body
 
     Banner
-        .create({ images })
+        .create({ pictures })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
-// Get all items
+// Get all photos
 router.get('/photosList', (req, res, next) => {
 
     Banner
@@ -20,11 +20,6 @@ router.get('/photosList', (req, res, next) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
-
-
-
-
-
 
 
 module.exports = router
